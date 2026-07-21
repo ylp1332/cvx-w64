@@ -1,3 +1,104 @@
+## CVX-W64: A system for disciplined convex programming for win64
+
+### Introduction
+
+This repository is a customized version of the official repository for [CVX](https://github.com/cvxr/cvx). It is just for win64, because I have only PC with Microsoft Windows, and I am not familiar with Linux or Mac OS.  
+
+I have been working with [cvx-w64.zip](https://web.cvxr.com/cvx/cvx-w64.zip) for many years. Since the latest release of [CVX](https://github.com/cvxr/cvx/releases/latest) does not provide some internal solvers such as ECOS, MOSEK and Gurobi, I make this repository for me.
+
+The use of MOSEK requires a license file from [Mosek](https://www.mosek.com), and academic users can obtain such a key free of charge. The use of Gurobi also requires a license key from Gurobi as well; again, academic users can obtain such a key free of charge.
+
+### How to 
+
+First run cvx_setup.m, you will see like this:
+
+```
+>> cvx_setup
+
+---------------------------------------------------------------------------
+CVX: Software for Disciplined Convex Programming       (c)2014 CVX Research
+Version 2.2, Build   9 (a0a77590)                  Tue Apr 23 19:28:09 2024
+---------------------------------------------------------------------------
+Installation info:
+    Path: C:\MatlabShared\cvx-w64
+    MATLAB version: 9.5 (R2018b)
+    OS: Windows 7 amd64 version 6.1
+    Java version: 1.8.0_152
+Verfying CVX directory contents:
+    No missing files.
+Preferences: none found; defaults loaded.
+---------------------------------------------------------------------------
+Setting CVX paths...done.
+Saving updated path...done.
+Searching for solvers...5 shims found.
+5 solvers initialized (* = default):
+    ECOS     2.0.10    {cvx}\ecos
+    Gurobi   9.52      {cvx}\gurobi\w64
+    Mosek    9.3.22    {cvx}\mosek\w64
+ *  SDPT3    4.0       {cvx}\sdpt3
+    SeDuMi   1.3.8     {cvx}\sedumi
+Saving updated preferences...done.
+Testing with a simple model...done!
+---------------------------------------------------------------------------
+To change the default solver, type "cvx_solver <solver_name>".
+To save this change for future sessions, type "cvx_save_prefs".
+Please consult the users' guide for more information.
+---------------------------------------------------------------------------
+
+>> 
+```
+
+Then set up the default solver, you will see like this:
+
+```
+>> cvx_solver Mosek
+>> cvx_save_prefs
+Saving prefs...done.
+>> 
+```
+
+Run cvx_setup.m again, you will see like this:
+
+```
+>> cvx_setup
+
+---------------------------------------------------------------------------
+CVX: Software for Disciplined Convex Programming       (c)2014 CVX Research
+Version 2.2, Build   9 (a0a77590)                  Tue Apr 23 19:28:09 2024
+---------------------------------------------------------------------------
+Installation info:
+    Path: C:\MatlabShared\cvx-w64
+    MATLAB version: 9.5 (R2018b)
+    OS: Windows 7 amd64 version 6.1
+    Java version: 1.8.0_152
+Verfying CVX directory contents:
+    No missing files.
+Preferences: 
+    Path: C:\Users\gwtd\AppData\Roaming\MathWorks\MATLAB\cvx_prefs.mat
+---------------------------------------------------------------------------
+Setting CVX paths...already set!
+Searching for solvers...5 shims found.
+5 solvers initialized (* = default):
+    ECOS     2.0.10    {cvx}\ecos
+    Gurobi   9.52      {cvx}\gurobi\w64
+ *  Mosek    9.3.22    {cvx}\mosek\w64
+    SDPT3    4.0       {cvx}\sdpt3
+    SeDuMi   1.3.8     {cvx}\sedumi
+Saving updated preferences...done.
+Testing with a simple model...done!
+---------------------------------------------------------------------------
+To change the default solver, type "cvx_solver <solver_name>".
+To save this change for future sessions, type "cvx_save_prefs".
+Please consult the users' guide for more information.
+---------------------------------------------------------------------------
+
+>> 
+```
+
+
+
+------
+
 ## CVX: A system for disciplined convex programming
 
 #### [Click here](https://github.com/cvxr/cvx/releases/latest) to download a bundle of this repository, including pre-compiled MEX files.
@@ -71,7 +172,7 @@ There are four primary mechanisms for obtaining support for CVX:
 Easily the most important page on the CVX Forum is the FAQ:
 
 > [***Why isn't CVX accepting my model? READ THIS FIRST!***](https://ask.cvxr.com/t/why-isnt-cvx-accepting-my-model-read-this-first/570)
- 
+
 *Everyone* who attempts to use CVX should read that page! It should
 save much frustration.
 
