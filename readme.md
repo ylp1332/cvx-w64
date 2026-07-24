@@ -2,7 +2,7 @@
 
 ### Introduction
 
-This repository is a customized version of the official repository for [CVX](https://github.com/cvxr/cvx). It is just for win64, because I have only PC with Microsoft Windows, and I am not familiar with Linux or Mac OS.  
+This repository is a customized version of the official repository for [CVX](https://github.com/cvxr/cvx). It is just for win64, because I have only PC with Microsoft Windows, and I am not very familiar with Linux or Mac OS.  
 
 I have been working with [cvx-w64.zip](https://web.cvxr.com/cvx/cvx-w64.zip) for many years. Since the latest release of [CVX](https://github.com/cvxr/cvx/releases/latest) does not provide some internal solvers such as ECOS, MOSEK and Gurobi, I make this repository for me.
 
