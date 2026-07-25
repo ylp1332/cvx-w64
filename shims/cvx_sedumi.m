@@ -9,11 +9,12 @@ if ~isempty(shim.solve)
     return
 end
 
+fs = cvx___.fs;
+ps = cvx___.ps;
+
 if isempty(shim.name)
     fname = 'sedumi.m';
     flen = length(fname);
-    fs = cvx___.fs;
-    ps = cvx___.ps;
     int_path = [cvx___.where, fs];
     int_plen = length(int_path);
     shim.name = 'SeDuMi';
@@ -50,16 +51,16 @@ if isempty(shim.name)
         if isempty(tshim.error)
             otp = regexp(otp, 'SeDuMi \d\S+', 'match');
             if ~isempty(otp), tshim.version = otp{1}(8:end); end
-            vnum = str2double(tshim.version);
-            tshim.check = @check;
-            tshim.solve = @solve;
-            tshim.eargs = {vnum >= 1.3 && vnum < 1.32};
-            if k ~= 2
-                tshim.path = [new_dir, ps];
+            tshim.path = [new_dir, ps];
+            if k == 1
                 if ~isempty(cvx___.msub) && exist([new_dir, fs, cvx___.msub], 'dir')
                     tshim.path = [new_dir, fs, cvx___.msub, ps, tshim.path];
                 end
             end
+            tshim.check = @check;
+            tshim.solve = @solve;
+            vnum = str2double(tshim.version);
+            tshim.eargs = {vnum >= 1.3 && vnum < 1.32};
         end
         shim = [shim, tshim]; %#ok
     end

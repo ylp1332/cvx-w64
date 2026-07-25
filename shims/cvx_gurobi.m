@@ -10,6 +10,7 @@ if ~isempty(shim.solve)
 end
 
 fs = cvx___.fs;
+ps = cvx___.ps;
 mext = cvx___.mext;
 mlen = length(mext);
 int_path = [cvx___.where, fs];
@@ -105,9 +106,9 @@ for k = 1:length(shim)
     end
     shim(k).version = sprintf('%d.%d%d', vi.major, vi.minor, vi.technical);
     shim(k).fullpath = fpath;
+    shim(k).path = [npath, ps];
     shim(k).check = @check;
     shim(k).solve = @solve;
-    shim(k).path = [npath, cvx___.ps];
     shim(k).eargs = {};
 end
 

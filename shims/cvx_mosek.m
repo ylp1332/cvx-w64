@@ -10,6 +10,7 @@ if ~isempty(shim.solve)
 end
 
 fs = cvx___.fs;
+ps = cvx___.ps;
 mext = cvx___.mext;
 mlen = length(mext);
 int_path = [cvx___.where, fs];
@@ -122,7 +123,7 @@ for k = 1:length(shim)
     end
     clear('mosekopt');
     shim(k).fullpath = fpath;
-    shim(k).path = [npath, cvx___.ps];
+    shim(k).path = [npath, ps];
     shim(k).check = @check;
     shim(k).solve = @solve;
     shim(k).eargs = {@mosekopt};

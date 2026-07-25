@@ -9,11 +9,12 @@ if ~isempty(shim.solve)
     return
 end
 
+fs = cvx___.fs;
+ps = cvx___.ps;
+
 if isempty(shim.name)
     fname = ['ecos.', mexext];
     flen = length(fname);
-    fs = cvx___.fs;
-    ps = cvx___.ps;
     int_path = [cvx___.where, fs];
     int_plen = length(int_path);
     shim.name = 'ECOS';
@@ -40,21 +41,17 @@ if isempty(shim.name)
         else
             tshim.location = new_dir;
         end
-        if ~exist('OCTAVE_VERSION', 'builtin')
-            outp = evalc('ecos', '[]'); %#ok
-            [tok, remain] = strtok(outp, ' '); %#ok
-            tok = strtok(remain, ' ');
-            if ~isempty(tok)
-                tshim.version = tok;
-            end
+        outp = evalc('ecos', '[]'); %#ok
+        [tok, remain] = strtok(outp, ' '); %#ok
+        tok = strtok(remain, ' ');
+        if ~isempty(tok)
+            tshim.version = tok;
         end
         if isempty(tshim.error)
+            tshim.path = [new_dir, ps];
             tshim.check = @check;
             tshim.solve = @solve;
             tshim.eargs = {};
-            if k ~= 1
-                tshim.path = [new_dir, ps];
-            end
         end
         shim = [shim, tshim]; %#ok
     end

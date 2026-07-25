@@ -10,9 +10,9 @@ The use of MOSEK requires a license file from [Mosek](https://www.mosek.com), an
 
 ### How to
 
-If you have obtained a license files for MOSEK, copy it to the directory： C:\Users\your-username\mosek\mosek.lic. If the directory mosek does not exist, create it with mkdir.
+If you have obtained a license file for MOSEK, copy it to the directory： C:\Users\\**your-username**\mosek\mosek.lic. If the directory mosek does not exist, create it with mkdir.
 
-If you have obtained a license files for Gurobi, copy it to the directory： cvx-w64\gurobi\w64\gurobi.lic. If this file exists, just replace it.
+If you have obtained a license file for Gurobi, copy it to the directory： cvx-w64\gurobi\w64\gurobi.lic. If this file exists, just replace it.
 
 First run cvx_setup.m, you will see like this:
 
@@ -179,7 +179,7 @@ There are four primary mechanisms for obtaining support for CVX:
 Easily the most important page on the CVX Forum is the FAQ:
 
 > [***Why isn't CVX accepting my model? READ THIS FIRST!***](https://ask.cvxr.com/t/why-isnt-cvx-accepting-my-model-read-this-first/570)
-
+ 
 *Everyone* who attempts to use CVX should read that page! It should
 save much frustration.
 

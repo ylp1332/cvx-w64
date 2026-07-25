@@ -9,11 +9,12 @@ if ~isempty(shim.solve)
     return
 end
 
+fs = cvx___.fs;
+ps = cvx___.ps;
+
 if isempty(shim.name)
     fname = 'sdpt3.m';
     flen = length(fname);
-    fs = cvx___.fs;
-    ps = cvx___.ps;
     int_path = [cvx___.where, fs];
     int_plen = length(int_path);
     shim.name = 'SDPT3';
@@ -50,7 +51,8 @@ if isempty(shim.name)
         if isempty(tshim.error)
             otp = regexp(otp, 'SDPT3: version \d+\.\d+', 'match');
             if ~isempty(otp), tshim.version = otp{1}(16:end); end
-            if k ~= 2
+            tshim.path = [new_dir, ps];
+            if k == 1
                 tpath = {new_dir, [new_dir, fs, 'Solver'], [new_dir, fs, 'HSDSolver'], [new_dir, fs, 'Solver', fs, 'Mexfun']};
                 if ~isempty(cvx___.msub) && exist([tpath{end}, fs, cvx___.msub], 'dir')
                     tpath{end} = [tpath{end}, fs, cvx___.msub];
