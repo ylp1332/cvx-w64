@@ -2,17 +2,21 @@
 
 ### Introduction
 
-This repository is a customized version of the official repository for [CVX](https://github.com/cvxr/cvx). It is just for win64, because I have only PC with Microsoft Windows, and I am not very familiar with Linux or Mac OS.  
+This repository is a customized version of the official repository for [CVX](https://github.com/cvxr/cvx). It is based on the latest release of CVX, that is [2.2.2](https://github.com/cvxr/CVX/releases/download/2.2.2/cvx.zip), which was released on April 24, 2024. It is just for win64, because I have only PC with Microsoft Windows, and I am not very familiar with Linux or MacOS.  
 
-I have been working with [cvx-w64.zip](https://web.cvxr.com/cvx/cvx-w64.zip) for many years. Since the latest release of [CVX](https://github.com/cvxr/cvx/releases/latest) does not provide some internal solvers such as ECOS, MOSEK and Gurobi, I make this repository for me.
+I have been working with [cvx-w64.zip](https://web.cvxr.com/cvx/cvx-w64.zip) for about 10 years. Since the latest release of [CVX](https://github.com/cvxr/CVX/releases/tag/2.2.2) does not provide some internal solvers such as ECOS, MOSEK and Gurobi, I have made this repository for me and someone else. In this repository, ECOS was added, MOSEK and Gurobi were updated to 9.3.22 and 9.52, and the associating shims were modified. All of the changes can be seen by comparing this repository with the official repository.
 
-The use of MOSEK requires a license file from [Mosek](https://www.mosek.com), and academic users can obtain such a key free of charge. The use of Gurobi also requires a license key from Gurobi as well; again, academic users can obtain such a key free of charge.
+The use of MOSEK requires a license file from [Mosek](https://www.mosek.com), and academic users can obtain such a key free of charge. The use of Gurobi also requires a license key from [Gurobi](https://www.gurobi.com) as well; again, academic users can obtain such a key free of charge.
 
-### How to 
+### How to
+
+If you have obtained a license files for MOSEK, copy it to the directory： C:\Users\your-username\mosek\mosek.lic. If the directory mosek does not exist, create it with mkdir.
+
+If you have obtained a license files for Gurobi, copy it to the directory： cvx-w64\gurobi\w64\gurobi.lic. If this file exists, just replace it.
 
 First run cvx_setup.m, you will see like this:
 
-```
+```matlab
 >> cvx_setup
 
 ---------------------------------------------------------------------------
@@ -48,9 +52,9 @@ Please consult the users' guide for more information.
 >> 
 ```
 
-Then set up the default solver, you will see like this:
+Then change the default solver, you will see like this:
 
-```
+```matlab
 >> cvx_solver Mosek
 >> cvx_save_prefs
 Saving prefs...done.
@@ -59,7 +63,7 @@ Saving prefs...done.
 
 Run cvx_setup.m again, you will see like this:
 
-```
+```matlab
 >> cvx_setup
 
 ---------------------------------------------------------------------------
@@ -95,9 +99,12 @@ Please consult the users' guide for more information.
 >> 
 ```
 
+### Credits
+Michael Grant and Stephen Boyd
 
 
 ------
+
 
 ## CVX: A system for disciplined convex programming
 
