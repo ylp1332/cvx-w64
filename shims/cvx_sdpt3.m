@@ -51,15 +51,12 @@ if isempty(shim.name)
         if isempty(tshim.error)
             otp = regexp(otp, 'SDPT3: version \d+\.\d+', 'match');
             if ~isempty(otp), tshim.version = otp{1}(16:end); end
-            tshim.path = [new_dir, ps];
-            if k == 1
-                tpath = {new_dir, [new_dir, fs, 'Solver'], [new_dir, fs, 'HSDSolver'], [new_dir, fs, 'Solver', fs, 'Mexfun']};
-                if ~isempty(cvx___.msub) && exist([tpath{end}, fs, cvx___.msub], 'dir')
-                    tpath{end} = [tpath{end}, fs, cvx___.msub];
-                end
-                tpath = sprintf(['%s', ps], tpath{:});
-                tshim.path = tpath;
+            tpath = {new_dir, [new_dir, fs, 'Solver'], [new_dir, fs, 'HSDSolver'], [new_dir, fs, 'Solver', fs, 'Mexfun']};
+            if ~isempty(cvx___.msub) && exist([tpath{end}, fs, cvx___.msub], 'dir')
+                tpath{end} = [tpath{end}, fs, cvx___.msub];
             end
+            tpath = sprintf(['%s', ps], tpath{:});
+            tshim.path = tpath;
             tshim.check = @check;
             tshim.solve = @solve;
             tshim.eargs = {};

@@ -52,10 +52,8 @@ if isempty(shim.name)
             otp = regexp(otp, 'SeDuMi \d\S+', 'match');
             if ~isempty(otp), tshim.version = otp{1}(8:end); end
             tshim.path = [new_dir, ps];
-            if k == 1
-                if ~isempty(cvx___.msub) && exist([new_dir, fs, cvx___.msub], 'dir')
-                    tshim.path = [new_dir, fs, cvx___.msub, ps, tshim.path];
-                end
+            if ~isempty(cvx___.msub) && exist([new_dir, fs, cvx___.msub], 'dir')
+                tshim.path = [new_dir, ps, new_dir, fs, cvx___.msub, ps];
             end
             tshim.check = @check;
             tshim.solve = @solve;
