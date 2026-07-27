@@ -100,11 +100,10 @@ Please consult the users' guide for more information.
 ```
 
 ### Credits
+
 Michael Grant and Stephen Boyd
 
-
 ------
-
 
 ## CVX: A system for disciplined convex programming
 
