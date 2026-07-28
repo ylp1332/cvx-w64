@@ -803,6 +803,7 @@ sets/rotated_lorentz.m
 sets/semidefinite.m
 sets/simplex.m
 shims/cvx_ecos.m
+shims/cvx_glpk.m
 shims/cvx_gurobi.m
 shims/cvx_mosek.m
 shims/cvx_sdpt3.m
